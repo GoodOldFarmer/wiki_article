@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRef } from 'react';
 import './App.css'
 
 //
@@ -8,34 +9,24 @@ import './App.css'
 // - 
 //
 //
+
 export default function ImageFetcher() {
   
-  function getCurrentDay() {
-      const date = new Date();
-      const year = date.getFullYear().toString();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      return `${year}/${month}/${day}`;
-  }
-
-  let currentDay = getCurrentDay()
-
   
-  
+  const [selectedDay, setSelectedDay] =useState('')
   const [pageUrl, setPageUrl] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [imageDescription, setImageDescription] = useState('');
   const [imageExtract, setImageExtract] = useState('');
   const [imageTitle, setImageTitle] = useState('');
   
-  
- 
+
+  const inputRef = useRef()
 
   useEffect(() => {
-    fetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/featured/${currentDay}`)
+    fetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/featured/${selectedDay}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         setImageUrl(data.tfa.thumbnail.source)
         setImageTitle(data.tfa.titles.normalized)
         setImageDescription(data.tfa.description)
@@ -43,27 +34,43 @@ export default function ImageFetcher() {
         setPageUrl(data.tfa.content_urls.desktop.page)
     })
       .catch(error => console.error(error));
-  }, [currentDay]);
+  }, [selectedDay]);
 
 
    const openURL = async (url) => {
     window.open(url, '_blank')
   }
 
+  const handleDateChange = (e) => {
+    const date = e.target.value
+    const formattedDate = date.split('-').join('/')
+    setSelectedDay(formattedDate)
+  }
   return (
     <div>
-        <h3> {currentDay}</h3>
+        <input
+          ref={inputRef}
+          type='date'
+          onChange={handleDateChange}
+          >
+        </input>
+
+        {selectedDay !== '' ? " " : <h3>choose a date</h3> }
+        
+        <h2>{imageTitle}</h2>
+        <h3>{imageDescription}</h3>
         <img 
           src={imageUrl} 
           alt={imageTitle} 
           onClick={() => openURL(pageUrl) }
-        />
-        <h2>{imageTitle}</h2>
-        <h3>{imageDescription}</h3>
+          />
         <p>{imageExtract}</p>
-        <button
+        {selectedDay !== '' ? <button
           onClick={ () => openURL(pageUrl)}
-        >go to wiki page</button>
+        >go to wiki page</button> :" " }
+
+        
+
 
 
     </div>
