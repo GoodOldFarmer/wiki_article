@@ -8,7 +8,13 @@ h2{
 }
 
 p{
+  font-size: 20px;
   text-align: justify;
+  /* background-color: rgb(199, 199, 199); */
+
+  max-width: 50%;
+  min-width: 330px;
+  margin: 0 auto;
   padding: 0 8vw 0 8vw;
 }
 
@@ -20,4 +26,14 @@ img{
 img:hover{
   cursor: pointer;
   max-height: 100%;
+}
+
+button{
+  margin: 20px;
+  padding: 10px;
+
+}
+
+button:hover{
+  cursor: pointer;
 }
