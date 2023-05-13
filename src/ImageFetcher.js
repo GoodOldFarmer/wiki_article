@@ -11,9 +11,21 @@ import './App.css'
 //
 
 export default function ImageFetcher() {
+
+  function formatDate(today){
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    return `${year}/${month}/${day}`
+
+  }
   
+  const currentDate = new Date()
+
+  const todayFormated = formatDate(currentDate)
   
-  const [selectedDay, setSelectedDay] =useState('')
+
+  const [selectedDay, setSelectedDay] =useState(todayFormated)
   const [pageUrl, setPageUrl] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [imageDescription, setImageDescription] = useState('');
@@ -37,7 +49,7 @@ export default function ImageFetcher() {
   }, [selectedDay]);
 
 
-   const openURL = async (url) => {
+  const openURL = async (url) => {
     window.open(url, '_blank')
   }
 
@@ -49,13 +61,14 @@ export default function ImageFetcher() {
   return (
     <div>
         <input
+          className='date-input'
           ref={inputRef}
           type='date'
           onChange={handleDateChange}
           >
         </input>
 
-        {selectedDay !== '' ? " " : <h3>choose a date</h3> }
+        {selectedDay !== " " ? " " : <h3>choose a date</h3> }
         
         <h2>{imageTitle}</h2>
         <h3>{imageDescription}</h3>
