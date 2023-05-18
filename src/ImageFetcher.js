@@ -51,7 +51,7 @@ export default function ImageFetcher() {
 
 
   const openURL = async (url) => {
-    window.open(url, '_blank')
+    window.open(url, "_self")
   }
 
   const handleDateChange = (e) => {
@@ -59,6 +59,7 @@ export default function ImageFetcher() {
     const formattedDate = date.split('-').join('/')
     setSelectedDay(formattedDate)
   }
+
   return (
     <div>
         <input
@@ -83,11 +84,12 @@ export default function ImageFetcher() {
           onClick={ () => openURL(pageUrl)}
         >go to wiki page
         </button>
-
-        
-
-
+        <button
+          onClick={ () => window.open("https://www.davidrodrigues.fr", "_self")}
+        >
+        davidrodrigues.fr
+        </button>
 
     </div>
-  );
+  )
 }
