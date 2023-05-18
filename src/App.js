@@ -6,8 +6,8 @@ function App() {
   
     <div className="App">
       <h1>Wikipedia Picture Of The Day</h1>
-    </div>
     < ImageFetcher />
+    </div>
 
   </>
   ;

@@ -39,6 +39,7 @@ export default function ImageFetcher() {
     fetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/featured/${selectedDay}`)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         setImageUrl(data.tfa.thumbnail.source)
         setImageTitle(data.tfa.titles.normalized)
         setImageDescription(data.tfa.description)
@@ -62,13 +63,13 @@ export default function ImageFetcher() {
     <div>
         <input
           className='date-input'
+          value={selectedDay.split('/').join('-')}
           ref={inputRef}
           type='date'
           onChange={handleDateChange}
           >
         </input>
 
-        {selectedDay !== " " ? " " : <h3>choose a date</h3> }
         
         <h2>{imageTitle}</h2>
         <h3>{imageDescription}</h3>
@@ -78,9 +79,10 @@ export default function ImageFetcher() {
           onClick={() => openURL(pageUrl) }
           />
         <p>{imageExtract}</p>
-        {selectedDay !== '' ? <button
+        <button
           onClick={ () => openURL(pageUrl)}
-        >go to wiki page</button> :" " }
+        >go to wiki page
+        </button>
 
         
 
