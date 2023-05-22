@@ -1,12 +1,12 @@
-# 🖼️ Fetch Picture of the Day from Wikipedia 🖼️
+# 🖼️ Fetch Article of the Day from Wikipedia 🖼️
 
-This project is a simple application that fetches the "Picture of the Day" from Wikipedia's API using the Fetch API and displays it. The "Picture of the Day" is a captivating image chosen by Wikipedia's editors, showcasing the diversity and beauty of our world.
+This project is a simple application that fetches the "Today's Featured Article" from Wikipedia's API using the Fetch API and displays it. The "PToday's Featured Article" is a captivating article chosen by Wikipedia's editors, showcasing the diversity of our world.
 
 ## Features ✨
 
-- Fetches the "Picture of the Day" from Wikipedia's API using the Fetch API.
-- Displays the fetched image along with its title and description.
-- Provides a date picker to fetch a new image.
+- Fetches the "Today's Featured Article" from Wikipedia's API using the Fetch API.
+- Displays the fetched informations.
+- Provides a date picker to fetch a new article.
 - Responsive design for optimal viewing on different devices.
 
 ## Technologies Used ⚙️
