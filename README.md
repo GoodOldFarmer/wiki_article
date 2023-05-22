@@ -1,6 +1,6 @@
 # 🖼️ Fetch Article of the Day from Wikipedia 🖼️
 
-This project is a simple application that fetches the "Today's Featured Article" from Wikipedia's API using the Fetch API and displays it. The "PToday's Featured Article" is a captivating article chosen by Wikipedia's editors, showcasing the diversity of our world.
+This project is a simple application that fetches the "Today's Featured Article" from Wikipedia's API using the Fetch API and displays it. The "Today's Featured Article" is a captivating article chosen by Wikipedia's editors, showcasing the diversity of our world.
 
 ## Features ✨
 
